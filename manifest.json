@@ -1,0 +1,12 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "スマート冷蔵庫シェフ",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "冷蔵庫シェフ",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "description": "冷蔵庫の余り食材から3通りのレシピを提案するアプリ"
+}
