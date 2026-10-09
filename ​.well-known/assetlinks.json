@@ -1,1 +1,9 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.eiriann102.twa",
+        "sha256_cert_fingerprints": ["38:B0:22:2F:5D:5C:E3:3C:1A:90:DF:3B:14:A5:BB:6A:C4:0E:51:4E:58:AE:15:2D:09:6F:73:1F:EC:9A:9E:F8"]
+      }
+    }]
 
