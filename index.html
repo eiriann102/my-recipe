@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
   <title>スマート冷蔵庫シェフ</title>
   <style>
     body { font-family: sans-serif; background: #f5f6f8; margin: 0; padding: 16px; color: #333; }
@@ -48,85 +49,4 @@
       <label class="check-item"><input type="checkbox" id="s_sake" checked> 料理酒</label>
       <label class="check-item"><input type="checkbox" id="s_miso" checked> 味噌</label>
       <label class="check-item"><input type="checkbox" id="s_salt" checked> 塩コショウ</label>
-      <label class="check-item"><input type="checkbox" id="s_oil" checked> 油・ごま油</label>
-    </div>
-  </div>
-
-  <button class="btn-submit" onclick="makeRecipes()">3通りのレシピを提案！</button>
-  <div id="results"></div>
-
-  <script>
-    let mode = 'quick';
-    let foods = [];
-
-    function setMode(m) {
-      mode = m;
-      document.getElementById('btnQuick').className = (m === 'quick' ? 'active' : '');
-      document.getElementById('btnGourmet').className = (m === 'gourmet' ? 'active' : '');
-    }
-
-    function addFood() {
-      const input = document.getElementById('foodInput');
-      const val = input.value.trim();
-      if (!val) return;
-      foods.push(val);
-      input.value = '';
-      renderTags();
-    }
-
-    function renderTags() {
-      const box = document.getElementById('foodTags');
-      box.innerHTML = '';
-      foods.forEach((f, i) => {
-        box.innerHTML += `<span class="tag">${f} <span onclick="removeFood(${i})" style="cursor:pointer">×</span></span>`;
-      });
-    }
-
-    function removeFood(i) {
-      foods.splice(i, 1);
-      renderTags();
-    }
-
-    function makeRecipes() {
-      if (foods.length === 0) {
-        alert('食材を1つ以上入力して「追加」を押してください！');
-        return;
-      }
-      const box = document.getElementById('results');
-      box.innerHTML = '';
-      const main = foods[0];
-      const sub = foods.length > 1 ? foods[1] : '玉ねぎや余り野菜';
-
-      const list = [
-        {
-          title: mode === 'quick' ? `${main}と${sub}の甘辛スピード炒め` : `${main}と${sub}の旨味染み込む照り煮`,
-          badge: mode === 'quick' ? '⚡ 10分・和風甘辛' : '🥘 25分・じっくり煮物',
-          steps: mode === 'quick' 
-            ? ['具材を薄切りにして火の通りを早くする。', 'フライパンで強火で2分炒める。', '醤油・みりん・酒を各大さじ1絡めて照りが出たら完成！']
-            : ['具材を大きめに切って香ばしく焼き目をつける。', '水200mlと酒・みりん各大さじ2を加えて15分弱火で煮る。', '醤油大さじ2を加え、煮汁が少なくなるまでコトコト煮詰める。']
-        },
-        {
-          title: `${main}のコク旨マヨ味噌焼き`,
-          badge: mode === 'quick' ? '⚡ 12分・コク旨' : '🥘 20分・濃厚オーブン風',
-          steps: ['味噌・マヨネーズ各大さじ1を混ぜておく。', 'フライパンで具材を両面しっかり焼く。', '火を止めてタレを余熱でサッと絡めて完成！']
-        },
-        {
-          title: `${main}と${sub}のネギ塩ごま油スープ`,
-          badge: '⚡ 8分・さっぱり塩味',
-          steps: ['小鍋に水350mlと鶏ガラスープの素小さじ1を沸かす。', '具材を入れて3分煮る。', '塩コショウで味を調え、仕上げにごま油をひと回し！']
-        }
-      ];
-
-      list.forEach((r, idx) => {
-        box.innerHTML += `
-          <div class="recipe-card">
-            <span class="recipe-badge">${r.badge}</span>
-            <div class="recipe-title">${idx + 1}. ${r.title}</div>
-            <ol class="recipe-steps">${r.steps.map(s => `<li>${s}</li>`).join('')}</ol>
-          </div>
-        `;
-      });
-    }
-  </script>
-</body>
-</html>
+      <label class="check-item"><input type="checkbox" id="s_oil" checked
